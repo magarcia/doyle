@@ -34,7 +34,7 @@ doyle requires Python3. Python2 support in progress.
 
 .. code-block::
 
-   pip3 install git+git://github.com/myuser/foo.git@master
+   pip3 install git+git://github.com/magarcia/doyle.git@master
 
 Features
 --------
