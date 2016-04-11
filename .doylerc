@@ -1,0 +1,25 @@
+# Directories
+[dirs]
+./
+
+# Types
+[types]
+python
+
+# Tags
+[tags]
+fix
+review
+todo
+hack
+wtf
+
+# Ignores
+[ignore]
+.git
+*.swp
+.tmp
+dist
+bower_components
+node_modules
+coverage
