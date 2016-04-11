@@ -8,7 +8,6 @@
 # [TODO] - Support for GitLab
 # [TODO] - Support for Jira
 
-
 import pkg_resources  # part of setuptools
 import click
 from os import getcwd, path
@@ -82,7 +81,7 @@ def process_output(types, input, path, endings=[]):
 
 
 def find_comments(types, ext, c, endings, ignore, path):
-    regex = "\"^\\s*%s\W+?(%s).+$\"" % (c, '|'.join(types))
+    regex = "\"^\\s*(%s)\W+?(%s).+$\"" % ('|'.join(c), '|'.join(types))
 
     command = 'ag --ackmate --ignore-case %s --%s  %s %s' % (ignore, ext,
                                                              regex, path)
@@ -204,9 +203,8 @@ def cli(quiet, paths, format, type, count, ignore):
 
     fmatches = {}
     for ext, comment in selected.items():
-        for c in comment['starts']:
-            fmatches.update(find_comments(tags, ext, c, comment['endings'],
-                                          ignore, path))
+        fmatches.update(find_comments(tags, ext, comment['endings'], comment[
+            'endings'], ignore, path))
 
     if not quiet:
         print_formated(fmatches, format)
