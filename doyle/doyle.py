@@ -13,7 +13,10 @@ import click
 from os import getcwd, path
 from re import search, IGNORECASE
 from subprocess import Popen, PIPE
-from configparser import ConfigParser
+try:
+    from configparser import ConfigParser
+except:
+    from ConfigParser import ConfigParser
 
 from doyle.definitions import COMMENT_DEFINITIONS
 VERSION = pkg_resources.require("doyle")[0].version
@@ -101,7 +104,7 @@ def print_file_types(ctx, param, value, *args, **kwargs):
     ctx.exit()
 
 
-# [TODO] - unite output format
+# [TODO] - Unite output format
 def print_formated(fmatches, format):
     if format == 'json':
         from json import dumps
